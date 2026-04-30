@@ -30,7 +30,7 @@ export default function Nav() {
         ))}
         <li>
           <a
-            href="https://github.com/herstack"
+            href="https://github.com/HerStack-org"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-medium no-underline px-5 py-2 rounded-full transition-all duration-200"

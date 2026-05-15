@@ -37,7 +37,8 @@ export default function Footer() {
               {items.map(item => (
                 <li key={item}>
                   <a
-                    href="#"
+                   href={item === 'Our Mission' ? '/our-mission' : '#'}
+                   title={item !== 'Our Mission' ? 'Coming Soon' : ''}
                     className="text-sm font-light no-underline transition-colors duration-200"
                     style={{ color: 'rgba(255,255,255,0.55)' }}
                     onMouseEnter={e => e.target.style.color = 'white'}

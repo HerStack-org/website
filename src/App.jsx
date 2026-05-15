@@ -1,4 +1,6 @@
 import './styles/globals.css'
+import { Routes, Route } from 'react-router-dom'
+
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Marquee from './components/Marquee'
@@ -9,8 +11,9 @@ import Mentors from './components/Mentors'
 import SummerOfAI from './components/SummerOfAI'
 import Contribute from './components/Contribute'
 import Footer from './components/Footer'
+import OurMission from './components/OurMission'
 
-export default function App() {
+function HomePage() {
   return (
     <>
       <Nav />
@@ -26,5 +29,23 @@ export default function App() {
       </main>
       <Footer />
     </>
+  )
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route
+        path="/our-mission"
+        element={
+          <>
+            <Nav />
+            <OurMission />
+            <Footer />
+          </>
+        }
+      />
+    </Routes>
   )
 }

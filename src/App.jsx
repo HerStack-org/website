@@ -9,6 +9,7 @@ import Mentors from './components/Mentors'
 import SummerOfAI from './components/SummerOfAI'
 import Contribute from './components/Contribute'
 import Footer from './components/Footer'
+import BackToTopButton from './components/Backtotop'
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Contribute />
       </main>
       <Footer />
+      <BackToTopButton/>
     </>
   )
 }

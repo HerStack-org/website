@@ -1,30 +1,45 @@
-import './styles/globals.css'
-import Nav from './components/Nav'
-import Hero from './components/Hero'
-import Marquee from './components/Marquee'
-import Pillars from './components/Pillars'
-import LearningPath from './components/LearningPath'
-import Storyboards from './components/Storyboards'
-import Mentors from './components/Mentors'
-import SummerOfAI from './components/SummerOfAI'
-import Contribute from './components/Contribute'
-import Footer from './components/Footer'
+// Add these imports at the top of App.jsx
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import BlogPostLayout from "./components/BlogPostLayout";
+import blogs from "./data/blog";
 
-export default function App() {
+// --- Add this new component in the same file or a separate BlogPage.jsx ---
+const BlogPage = () => {
   return (
-    <>
-      <Nav />
-      <main>
-        <Hero />
-        <Marquee />
-        <Pillars />
-        <LearningPath />
-        <Storyboards />
-        <Mentors />
-        <SummerOfAI />
-        <Contribute />
-      </main>
-      <Footer />
-    </>
-  )
-}
+    <div className="max-w-4xl mx-auto px-4 py-10">
+      <h1 className="text-3xl font-bold text-gray-900 mb-8">Blog</h1>
+      <div className="grid gap-6 md:grid-cols-2">
+        {blogs.map((post) => (
+          <a
+            key={post.id}
+            href={`/blog/${post.slug}`}
+            className="block p-6 bg-white rounded-xl shadow hover:shadow-md transition border border-gray-100"
+          >
+            <span className="text-xs font-semibold uppercase text-purple-600">
+              {post.category}
+            </span>
+            <h2 className="mt-2 text-lg font-bold text-gray-800">
+              {post.title}
+            </h2>
+            <p className="mt-2 text-sm text-gray-500">{post.excerpt}</p>
+            <p className="mt-3 text-xs text-gray-400">
+              {post.date} · {post.readTime}
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const BlogPostPage = () => {
+  const slug = window.location.pathname.split("/blog/")[1];
+  const post = blogs.find((b) => b.slug === slug);
+  if (!post) return <p className="text-center py-20">Post not found.</p>;
+  return <BlogPostLayout post={post} />;
+};
+
+// --- Inside your <Routes> block, add these two routes ---
+// <Route path="/blog" element={<BlogPage />} />
+// <Route path="/blog/:slug" element={<BlogPostPage />} />

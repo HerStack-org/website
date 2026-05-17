@@ -1,10 +1,7 @@
-// Add these imports at the top of App.jsx
-import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import BlogPostLayout from "./components/BlogPostLayout";
 import blogs from "./data/blog";
 
-// --- Add this new component in the same file or a separate BlogPage.jsx ---
 const BlogPage = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
@@ -40,6 +37,14 @@ const BlogPostPage = () => {
   return <BlogPostLayout post={post} />;
 };
 
-// --- Inside your <Routes> block, add these two routes ---
-// <Route path="/blog" element={<BlogPage />} />
-// <Route path="/blog/:slug" element={<BlogPostPage />} />
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<BlogPage />} />
+      <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/:slug" element={<BlogPostPage />} />
+    </Routes>
+  );
+}
+
+export default App;

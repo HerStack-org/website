@@ -9,6 +9,7 @@ import Mentors from './components/Mentors'
 import SummerOfAI from './components/SummerOfAI'
 import Contribute from './components/Contribute'
 import Footer from './components/Footer'
+import Blog from './components/Blog'
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Storyboards />
         <Mentors />
         <SummerOfAI />
+        <Blog />
         <Contribute />
       </main>
       <Footer />

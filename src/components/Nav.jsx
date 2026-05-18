@@ -14,11 +14,11 @@ export default function Nav() {
 
         <ul className="hidden md:flex items-center gap-10 list-none">
           {[
-            {label: 'Learn', href: '#learn'},
-            {label: 'AI Concepts', href: '#concepts'},
-            {label: 'Mentors', href: '#mentors'},
-            {label: 'Summer of AI', href: '#summer'},
-            {label: 'Contribute', href: '#contribute'},
+            {label: 'Learn', href: '/#learn'},
+            {label: 'AI Concepts', href: '/#concepts'},
+            {label: 'Mentors', href: '/#mentors'},
+            {label: 'Summer of AI', href: '/#summer'},
+            {label: 'Contribute', href: '/#contribute'},
           ].map(({label, href}) => (
               <li key={label}>
                 <a

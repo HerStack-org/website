@@ -4,9 +4,9 @@ import { storyboards } from '../data/storyboards'
 
 const difficultyOptions = ['All', 'Beginner', 'Intermediate', 'Advanced']
 const difficultyStyles = {
-  beginner: 'bg-[rgba(123,92,240,0.12)] text-[#A78BFA]',
-  intermediate: 'bg-[rgba(0,201,167,0.12)] text-[#00C9A7]',
-  advanced: 'bg-[rgba(245,166,35,0.12)] text-[#F5A623]',
+  beginner: 'bg-[var(--purple-light)] text-[var(--purple)]',
+  intermediate: 'bg-[var(--teal-light)] text-[var(--teal)]',
+  advanced: 'bg-[var(--amber-light)] text-[var(--amber)]',
 }
 
 export default function Concepts() {

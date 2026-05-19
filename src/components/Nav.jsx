@@ -1,24 +1,25 @@
+import { Link } from 'react-router-dom'
 export default function Nav() {
   return (
       <nav
           style={{background: 'rgba(253,250,245,0.85)', borderBottom: '1px solid rgba(13,13,13,0.1)'}}
           className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-16 py-5 backdrop-blur-md"
       >
-        <a href="#" className="flex items-center gap-2 no-underline"
+        <Link to="/" className="flex items-center gap-2 no-underline"
            style={{color: 'var(--ink)', letterSpacing: '-0.02em'}}>
           <img src="/favicon.svg" alt="" style={{height: 24}}/>
           <span className="font-display text-2xl font-bold tracking-tight">
             Her<span style={{color: 'var(--purple)'}}>Stack</span>
           </span>
-        </a>
+        </Link>
 
         <ul className="hidden md:flex items-center gap-10 list-none">
           {[
-            {label: 'Learn', href: '#learn'},
-            {label: 'AI Concepts', href: '#concepts'},
-            {label: 'Mentors', href: '#mentors'},
-            {label: 'Summer of AI', href: '#summer'},
-            {label: 'Contribute', href: '#contribute'},
+            {label: 'Learn', href: '/#learn'},
+            {label: 'AI Concepts', href: '/#concepts'},
+            {label: 'Mentors', href: '/#mentors'},
+            {label: 'Summer of AI', href: '/#summer'},
+            {label: 'Contribute', href: '/#contribute'},
           ].map(({label, href}) => (
               <li key={label}>
                 <a

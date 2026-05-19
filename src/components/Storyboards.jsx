@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { storyboards } from '../data/storyboards'
 
 const difficultyColors = {
@@ -18,13 +19,13 @@ export default function Storyboards() {
             Big ideas, made visual
           </h2>
         </div>
-        <a
-          href="#"
+        <Link
+          to="/concepts"
           className="btn-secondary hidden md:inline-flex"
           style={{ color: 'rgba(255,255,255,0.6)', borderColor: 'rgba(255,255,255,0.15)' }}
         >
           View all concepts →
-        </a>
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">

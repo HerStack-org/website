@@ -11,6 +11,7 @@ import Storyboards from './components/Storyboards'
 import Mentors from './components/Mentors'
 import SummerOfAI from './components/SummerOfAI'
 import Contribute from './components/Contribute'
+import FAQ from './components/FAQ'
 import Concepts from './pages/Concepts'
 import BackToTopButton from './components/Backtotop'
 import OurMission from './components/OurMission'
@@ -43,6 +44,7 @@ export default function App() {
                     <Mentors />
                     <SummerOfAI />
                     <Contribute />
+                    <FAQ />
                   </>
               } />
               <Route path="/our-mission" element={<OurMission />} />

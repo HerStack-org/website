@@ -12,6 +12,9 @@ import Mentors from './components/Mentors'
 import SummerOfAI from './components/SummerOfAI'
 import Contribute from './components/Contribute'
 import Concepts from './pages/Concepts'
+import Footer from './components/Footer'
+import BackToTopButton from './components/Backtotop'
+import OurMission from './components/OurMission'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -23,32 +26,32 @@ function ScrollToTop() {
   return null
 }
 
+
 export default function App() {
   return (
     <>
       <Nav />
       <ScrollToTop />
       <main>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Hero />
-                <Marquee />
-                <Pillars />
-                <LearningPath />
-                <Storyboards />
-                <Mentors />
-                <SummerOfAI />
-                <Contribute />
-              </>
-            }
-          />
-          <Route path="/concepts" element={<Concepts />} />
-        </Routes>
+          <Routes>
+              <Route path="/" element={
+                  <>
+                    <Hero />
+                    <Marquee />
+                    <Pillars />
+                    <LearningPath />
+                    <Storyboards />
+                    <Mentors />
+                    <SummerOfAI />
+                    <Contribute />
+                  </>
+              } />
+              <Route path="/our-mission" element={<OurMission />} />
+              <Route path="/concepts" element={<Concepts />} />
+          </Routes>
       </main>
       <Footer />
+      <BackToTopButton/>
     </>
   )
 }

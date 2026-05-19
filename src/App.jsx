@@ -10,6 +10,7 @@ import Mentors from './components/Mentors'
 import SummerOfAI from './components/SummerOfAI'
 import Contribute from './components/Contribute'
 import Footer from './components/Footer'
+import BackToTopButton from './components/Backtotop'
 import OurMission from './components/OurMission'
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
           </Routes>
       </main>
       <Footer />
+      <BackToTopButton/>
     </>
   )
 }

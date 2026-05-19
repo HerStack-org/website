@@ -1,8 +1,7 @@
 export default function Hero() {
   return (
     <section
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ padding: '8rem 4rem 4rem' }}
+      className="relative min-h-screen flex items-center overflow-hidden px-5 sm:px-10 lg:px-16 pt-28 pb-16"
     >
       {/* Background */}
       <div className="absolute inset-0 z-0">
@@ -43,7 +42,7 @@ export default function Hero() {
         </div>
 
         <div
-          className="flex gap-12 mt-16 pt-8 animate-fade-up-5"
+          className="flex flex-wrap gap-6 sm:gap-10 lg:gap-12 mt-16 pt-8 animate-fade-up-5"
           style={{ borderTop: '1px solid var(--border)' }}
         >
           {[

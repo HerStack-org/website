@@ -24,7 +24,7 @@ const pillars = [
 
 export default function Pillars() {
   return (
-    <section id="about" className="py-24 px-16" style={{ background: 'white' }}>
+    <section id="about" className="py-16 lg:py-24 px-5 sm:px-8 lg:px-16" style={{ background: 'white' }}>
       <div className="mb-16 max-w-2xl">
         <div className="section-label">What we do</div>
         <h2 className="section-title">Everything a girl needs<br />to start building with AI</h2>

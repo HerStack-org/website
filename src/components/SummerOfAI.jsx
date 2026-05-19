@@ -25,7 +25,7 @@ export default function SummerOfAI() {
   return (
     <section
       id="summer"
-      className="py-24 px-16 relative overflow-hidden"
+      className="py-16 lg:py-24 px-5 sm:px-8 lg:px-16 relative overflow-hidden"
       style={{ background: 'var(--purple)' }}
     >
       {/* Big background year text */}
@@ -44,7 +44,7 @@ export default function SummerOfAI() {
         2026
       </div>
 
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
         {/* Left */}
         <div>
           <div className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: 'rgba(255,255,255,0.6)' }}>

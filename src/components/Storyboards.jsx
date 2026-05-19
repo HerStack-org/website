@@ -8,8 +8,8 @@ const difficultyColors = {
 
 export default function Storyboards() {
   return (
-    <section id="concepts" className="py-24 px-16" style={{ background: 'var(--ink)' }}>
-      <div className="flex justify-between items-end mb-12">
+    <section id="concepts" className="py-16 lg:py-24 px-5 sm:px-8 lg:px-16" style={{ background: 'var(--ink)' }}>
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-10 sm:mb-12">
         <div>
           <div className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: 'rgba(255,255,255,0.4)' }}>
             AI Concepts

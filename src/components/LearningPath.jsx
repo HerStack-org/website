@@ -7,8 +7,8 @@ export default function LearningPath() {
   const [activeStage, setActiveStage] = useState(1)
 
   return (
-    <section id="learn" className="py-24 px-16" style={{ background: 'var(--cream)' }}>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+    <section id="learn" className="py-16 lg:py-24 px-5 sm:px-8 lg:px-16" style={{ background: 'var(--cream)' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
 
         {/* Left: Steps */}
         <div>

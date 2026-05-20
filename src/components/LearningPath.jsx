@@ -67,7 +67,7 @@ export default function LearningPath() {
               href={r.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="absolute no-underline"
+              className="absolute no-underline transition-transform duration-300 hover:z-20"
               style={{
                 top: i * 80,
                 left: i % 2 === 0 ? 40 : 10,
@@ -77,7 +77,7 @@ export default function LearningPath() {
               }}
             >
               <div
-                className="rounded-2xl p-6"
+                className="rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl"
                 style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}
               >
                 <div className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: 'var(--ink-muted)' }}>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { storyboards } from '../data/storyboards'
+import { HighlightedText } from './Tooltip'
 
 const difficultyColors = {
   beginner: { bg: 'rgba(123,92,240,0.15)', color: '#A78BFA' },
@@ -21,8 +22,7 @@ export default function Storyboards() {
         </div>
         <Link
           to="/concepts"
-          className="btn-secondary hidden md:inline-flex"
-          style={{ color: 'rgba(255,255,255,0.6)', borderColor: 'rgba(255,255,255,0.15)' }}
+          className="btn-secondary hidden md:inline-flex text-white/60 border-white/15 hover:text-black hover:bg-white hover:border-white"
         >
           View all concepts →
         </Link>
@@ -32,7 +32,7 @@ export default function Storyboards() {
         {storyboards.slice(0, 3).map((s) => (
           <div
             key={s.id}
-            className="rounded-2xl overflow-hidden cursor-pointer transition-all duration-200"
+            className="rounded-2xl cursor-pointer transition-all duration-200"
             style={{ border: '1px solid rgba(255,255,255,0.08)' }}
             onMouseEnter={e => {
               e.currentTarget.style.transform = 'translateY(-4px)'
@@ -44,7 +44,7 @@ export default function Storyboards() {
             }}
           >
             <div
-              className="h-44 flex items-center justify-center text-6xl relative"
+              className="h-44 flex items-center justify-center text-6xl relative rounded-t-2xl overflow-hidden"
               style={{ background: s.gradient }}
             >
               {s.emoji}
@@ -55,12 +55,12 @@ export default function Storyboards() {
                 Visual Explainer
               </div>
             </div>
-            <div className="p-5" style={{ background: 'rgba(255,255,255,0.04)' }}>
+            <div className="p-5 rounded-b-2xl" style={{ background: 'rgba(255,255,255,0.04)' }}>
               <div className="font-display font-bold text-base mb-1.5" style={{ color: 'white' }}>
-                {s.title}
+                <HighlightedText text={s.title} />
               </div>
               <div className="text-sm leading-relaxed font-light" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                {s.description}
+                <HighlightedText text={s.description} />
               </div>
               <span
                 className="inline-block mt-3 text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wider"

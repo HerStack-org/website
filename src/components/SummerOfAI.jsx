@@ -1,5 +1,5 @@
-import { use, useState } from "react";
-
+import { useState } from "react";
+import { HighlightedText } from './Tooltip'
 
 const features = [
   {
@@ -79,9 +79,7 @@ export default function SummerOfAI() {
             className="text-lg leading-relaxed font-light mb-8"
             style={{ color: "rgba(255,255,255,0.75)", maxWidth: 480 }}
           >
-            An open source program where girls contribute to real AI projects,
-            get mentored by women in the industry, and earn a certificate that
-            actually means something.
+            <HighlightedText text="An open source program where girls contribute to real AI projects, get mentored by women in the industry, and earn a certificate that actually means something." />
           </p>
           <button
             onClick={() => SetBtn(true)}
@@ -142,7 +140,7 @@ export default function SummerOfAI() {
                   className="text-xs leading-relaxed font-light"
                   style={{ color: "rgba(255,255,255,0.65)" }}
                 >
-                  {description}
+                  <HighlightedText text={description} />
                 </p>
               </div>
             </div>

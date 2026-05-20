@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { learningStages, resources } from '../data/resources'
+import { HighlightedText } from './Tooltip'
 
 const featuredResources = resources.slice(0, 3)
 
@@ -45,7 +46,7 @@ export default function LearningPath() {
                     {stage.title}
                   </h4>
                   <p className="text-sm leading-relaxed font-light" style={{ color: 'var(--ink-muted)' }}>
-                    {stage.description}
+                    <HighlightedText text={stage.description} />
                   </p>
                   <span
                     className="inline-block mt-2 text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wider"

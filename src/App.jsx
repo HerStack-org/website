@@ -15,6 +15,7 @@ import FAQ from './components/FAQ'
 import Concepts from './pages/Concepts'
 import BackToTopButton from './components/Backtotop'
 import OurMission from './components/OurMission'
+import MentorList from './components/MentorList';
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -42,6 +43,7 @@ export default function App() {
                     <LearningPath />
                     <Storyboards />
                     <Mentors />
+
                     <SummerOfAI />
                     <Contribute />
                     <FAQ />
@@ -49,6 +51,7 @@ export default function App() {
               } />
               <Route path="/our-mission" element={<OurMission />} />
               <Route path="/concepts" element={<Concepts />} />
+              <Route path="/mentorlist" element={<MentorList />} />
           </Routes>
       </main>
       <Footer />

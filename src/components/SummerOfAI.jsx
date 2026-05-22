@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { HighlightedText } from './Tooltip'
 
 const features = [
   {
@@ -35,7 +34,7 @@ export default function SummerOfAI() {
   return (
     <section
       id="summer"
-      className="py-16 lg:py-24 px-5 sm:px-8 lg:px-16 relative overflow-hidden"
+      className="py-24 px-16 relative overflow-hidden"
       style={{ background: 'var(--purple)' }}
     >
       {/* Big background year text */}
@@ -75,11 +74,8 @@ export default function SummerOfAI() {
             <br />
             Summer of AI
           </h2>
-          <p
-            className="text-lg leading-relaxed font-light mb-8"
-            style={{ color: "rgba(255,255,255,0.75)", maxWidth: 480 }}
-          >
-            <HighlightedText text="An open source program where girls contribute to real AI projects, get mentored by women in the industry, and earn a certificate that actually means something." />
+          <p className="text-lg leading-relaxed font-light mb-8" style={{ color: 'rgba(255,255,255,0.75)', maxWidth: 480 }}>
+            An open source program where girls contribute to real AI projects, get mentored by women in the industry, and earn a certificate that actually means something.
           </p>
           <button
             onClick={() => SetBtn(true)}
@@ -130,24 +126,13 @@ export default function SummerOfAI() {
             >
               <span className="text-2xl flex-shrink-0">{icon}</span>
               <div>
-                <h4
-                  className="font-display font-bold text-sm mb-1"
-                  style={{ color: "white" }}
-                >
-                  {title}
-                </h4>
-                <p
-                  className="text-xs leading-relaxed font-light"
-                  style={{ color: "rgba(255,255,255,0.65)" }}
-                >
-                  <HighlightedText text={description} />
-                </p>
+                <h4 className="font-display font-bold text-sm mb-1" style={{ color: 'white' }}>{title}</h4>
+                <p className="text-xs leading-relaxed font-light" style={{ color: 'rgba(255,255,255,0.65)' }}>{description}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
     </section>
-      
-  );
+  )
 }

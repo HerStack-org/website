@@ -89,6 +89,18 @@ export const resources = [
     durationWeeks: 1,
     tags: ['llm', 'prompting', 'ai'],
   },
+  {
+    id: 7,
+    platform: 'University of Helsinki',
+    title: 'Elements of AI',
+    url: 'https://www.elementsofai.com/',
+    free: true,
+    hasCert: true,
+    difficulty: 'beginner',
+    stage: 1,
+    durationWeeks: 6,
+    tags: ['ai', 'beginner'],
+  },
 ]
 
 export const learningStages = [

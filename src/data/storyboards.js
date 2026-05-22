@@ -21,7 +21,7 @@ export const storyboards = [
     description: 'How computers learn from examples instead of being programmed with rules.',
     difficulty: 'beginner',
     status: 'coming-soon',
-    gradient: 'linear-gradient(135deg, #1a0d3d, #3d1a8a)',
+    gradient: 'linear-gradient(135deg, var(--purple-dark), var(--purple))',
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ export const storyboards = [
     description: 'The magic behind ChatGPT and other large language models, explained simply.',
     difficulty: 'intermediate',
     status: 'coming-soon',
-    gradient: 'linear-gradient(135deg, #0d1a33, #1a3d7a)',
+    gradient: 'linear-gradient(135deg, var(--purple-dark), var(--purple-mid))',
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ export const storyboards = [
     description: 'Two fundamental ways ML models make predictions — and when to use which.',
     difficulty: 'beginner',
     status: 'coming-soon',
-    gradient: 'linear-gradient(135deg, #1a0d2e, #4a1a7a)',
+    gradient: 'linear-gradient(135deg, var(--purple-dark), var(--purple))',
   },
   {
     id: 4,
@@ -48,7 +48,7 @@ export const storyboards = [
     description: 'The building blocks of modern AI — inspired by the human brain.',
     difficulty: 'beginner',
     status: 'coming-soon',
-    gradient: 'linear-gradient(135deg, #0d2d1a, #1a6644)',
+    gradient: 'linear-gradient(135deg, var(--teal), var(--teal-light))',
   },
   {
     id: 5,
@@ -57,7 +57,7 @@ export const storyboards = [
     description: 'How an AI model learns by making mistakes and correcting itself.',
     difficulty: 'intermediate',
     status: 'coming-soon',
-    gradient: 'linear-gradient(135deg, #2d1a0d, #6b3d1a)',
+    gradient: 'linear-gradient(135deg, var(--amber), var(--amber-light))',
   },
   {
     id: 6,
@@ -66,6 +66,6 @@ export const storyboards = [
     description: 'Why data is the fuel of AI — and what makes a good dataset.',
     difficulty: 'beginner',
     status: 'coming-soon',
-    gradient: 'linear-gradient(135deg, #1a1a2d, #3d3d7a)',
+    gradient: 'linear-gradient(135deg, var(--ink-soft), var(--purple))',
   },
 ]

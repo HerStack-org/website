@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { learningStages, resources } from '../data/resources'
+import { HighlightedText } from './Tooltip'
 
 const featuredResources = resources.slice(0, 3)
 
@@ -7,8 +8,8 @@ export default function LearningPath() {
   const [activeStage, setActiveStage] = useState(1)
 
   return (
-    <section id="learn" className="py-24 px-16" style={{ background: 'var(--cream)' }}>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+    <section id="learn" className="py-16 lg:py-24 px-5 sm:px-8 lg:px-16" style={{ background: 'var(--cream)' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
 
         {/* Left: Steps */}
         <div>
@@ -45,7 +46,7 @@ export default function LearningPath() {
                     {stage.title}
                   </h4>
                   <p className="text-sm leading-relaxed font-light" style={{ color: 'var(--ink-muted)' }}>
-                    {stage.description}
+                    <HighlightedText text={stage.description} />
                   </p>
                   <span
                     className="inline-block mt-2 text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wider"
@@ -67,7 +68,7 @@ export default function LearningPath() {
               href={r.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="absolute no-underline"
+              className="absolute no-underline transition-transform duration-300 hover:z-20"
               style={{
                 top: i * 80,
                 left: i % 2 === 0 ? 40 : 10,
@@ -77,7 +78,7 @@ export default function LearningPath() {
               }}
             >
               <div
-                className="rounded-2xl p-6"
+                className="rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl"
                 style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}
               >
                 <div className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: 'var(--ink-muted)' }}>

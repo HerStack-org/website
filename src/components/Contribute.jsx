@@ -13,12 +13,12 @@ const GitHubIcon = () => (
 
 export default function Contribute() {
   return (
-    <section id="contribute" className="py-24 px-16" style={{ background: 'var(--cream)' }}>
+    <section id="contribute" className="py-16 lg:py-24 px-5 sm:px-8 lg:px-16" style={{ background: 'var(--cream)' }}>
       <div className="section-label">Open Source</div>
       <h2 className="section-title">Built by the community,<br />for the community</h2>
       <p className="section-sub mb-12">Everything on HerStack — the code, the resources, the storyboards — is open source. You can contribute too.</p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
         {/* Ways to contribute */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {ways.map(({ icon, title, description }) => (
@@ -66,7 +66,7 @@ export default function Contribute() {
           </a>
 
           <div
-            className="flex gap-8 mt-8 pt-6"
+            className="flex flex-wrap gap-5 sm:gap-8 mt-8 pt-6"
             style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}
           >
             {[

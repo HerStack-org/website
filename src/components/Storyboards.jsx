@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { storyboards } from '../data/storyboards'
 import { HighlightedText } from './Tooltip'
@@ -9,6 +10,29 @@ const difficultyColors = {
 }
 
 export default function Storyboards() {
+  const [startIndex, setStartIndex] = useState(0)
+  const [fade, setFade] = useState(true)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false)
+      setTimeout(() => {
+        setStartIndex((prev) => (prev + 3) % storyboards.length)
+        setFade(true)
+      }, 400)
+    }, 10000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const visibleConcepts = [
+    storyboards[startIndex % storyboards.length],
+    storyboards[(startIndex + 1) % storyboards.length],
+    storyboards[(startIndex + 2) % storyboards.length],
+  ]
+
+  const totalDots = Math.ceil(storyboards.length / 3)
+  const activeDot = Math.floor(startIndex / 3) % totalDots
+
   return (
     <section id="concepts" className="py-16 lg:py-24 px-5 sm:px-8 lg:px-16" style={{ background: 'var(--ink)' }}>
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-10 sm:mb-12">
@@ -28,10 +52,13 @@ export default function Storyboards() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {storyboards.slice(0, 3).map((s) => (
+      <div
+        className="grid grid-cols-1 md:grid-cols-3 gap-5"
+        style={{ opacity: fade ? 1 : 0, transition: 'opacity 0.4s ease' }}
+      >
+        {visibleConcepts.map((s, i) => (
           <div
-            key={s.id}
+            key={`${s.id}-${i}`}
             className="rounded-2xl cursor-pointer transition-all duration-200"
             style={{ border: '1px solid rgba(255,255,255,0.08)' }}
             onMouseEnter={e => {
@@ -72,6 +99,58 @@ export default function Storyboards() {
           </div>
         ))}
       </div>
+
+      {/* Dot indicators + progress bar */}
+      <div className="mt-8 flex flex-col items-center gap-3">
+        <div className="flex gap-2">
+          {Array.from({ length: totalDots }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { setFade(false); setTimeout(() => { setStartIndex(i * 3); setFade(true) }, 400) }}
+              style={{
+                width: i === activeDot ? 24 : 8,
+                height: 8,
+                borderRadius: 4,
+                background: i === activeDot ? 'white' : 'rgba(255,255,255,0.25)',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                padding: 0,
+              }}
+              aria-label={`Go to group ${i + 1}`}
+            />
+          ))}
+        </div>
+        {/* 10s progress bar */}
+        <ProgressBar key={startIndex} />
+      </div>
+
+      <div className="text-center mt-6 md:hidden">
+        <Link to="/concepts" className="btn-secondary inline-flex text-white/60 border-white/15">
+          View all concepts →
+        </Link>
+      </div>
     </section>
+  )
+}
+
+function ProgressBar() {
+  return (
+    <div style={{ width: 120, height: 2, background: 'rgba(255,255,255,0.15)', borderRadius: 2, overflow: 'hidden' }}>
+      <div
+        style={{
+          height: '100%',
+          background: 'white',
+          borderRadius: 2,
+          animation: 'progress10s 10s linear forwards',
+        }}
+      />
+      <style>{`
+        @keyframes progress10s {
+          from { width: 0% }
+          to   { width: 100% }
+        }
+      `}</style>
+    </div>
   )
 }

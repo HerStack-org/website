@@ -40,7 +40,7 @@ const BackToTopButton = () => {
         borderRadius: "50%",
         border: "none",
         outline: "none",
-        backgroundColor: isHovered ? "#eab308" : "#facc15",
+        backgroundColor: isHovered ? "var(--purple-dark)" : "var(--purple)",
         color: "#ffffff",
         cursor: "pointer",
         boxShadow: isHovered

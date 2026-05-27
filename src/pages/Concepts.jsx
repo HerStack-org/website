@@ -1,31 +1,47 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { storyboards } from '../data/storyboards'
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { storyboards } from "../data/storyboards";
+import { storyboardComponents } from "../data/storyboardMapping"; // Dynamic map import
 
-const difficultyOptions = ['All', 'Beginner', 'Intermediate', 'Advanced']
+const difficultyOptions = ["All", "Beginner", "Intermediate", "Advanced"];
 const difficultyStyles = {
-  beginner: 'bg-[var(--purple-light)] text-[var(--purple)]',
-  intermediate: 'bg-[var(--teal-light)] text-[var(--teal)]',
-  advanced: 'bg-[var(--amber-light)] text-[var(--amber)]',
-}
+  beginner: "bg-[var(--purple-light)] text-[var(--purple)]",
+  intermediate: "bg-[var(--teal-light)] text-[var(--teal)]",
+  advanced: "bg-[var(--amber-light)] text-[var(--amber)]",
+};
 
 export default function Concepts() {
-  const [filter, setFilter] = useState('All')
-  const filteredConcepts = filter === 'All'
-    ? storyboards
-    : storyboards.filter((item) => item.difficulty.toLowerCase() === filter.toLowerCase())
+  const [filter, setFilter] = useState("All");
+
+  // Stores the mapped component definition to display inside the modal window context
+  const [ActiveStoryboardComponent, setActiveStoryboardComponent] =
+    useState(null);
+
+  const filteredConcepts =
+    filter === "All"
+      ? storyboards
+      : storyboards.filter(
+          (item) => item.difficulty.toLowerCase() === filter.toLowerCase(),
+        );
 
   return (
-    <section className="min-h-screen px-6 py-24 lg:px-16" style={{ background: 'var(--cream)' }}>
+    <section
+      className="min-h-screen px-6 py-24 lg:px-16"
+      style={{ background: "var(--cream)" }}
+    >
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-12">
           <div>
             <div className="section-label">AI Concepts</div>
-            <h1 className="section-title" style={{ color: 'var(--ink)' }}>
+            <h1 className="section-title" style={{ color: "var(--ink)" }}>
               Explore every concept in one place
             </h1>
-            <p className="section-sub mt-4" style={{ color: 'var(--ink-soft)' }}>
-              Browse the full HerStack concept library with beginner-friendly explainers and visual storyboards.
+            <p
+              className="section-sub mt-4"
+              style={{ color: "var(--ink-soft)" }}
+            >
+              Browse the full HerStack concept library with beginner-friendly
+              explainers and visual storyboards.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -36,8 +52,8 @@ export default function Concepts() {
                 onClick={() => setFilter(option)}
                 className={`rounded-full border px-4 py-2 text-sm font-semibold transition duration-200 ${
                   filter === option
-                    ? 'border-transparent bg-[var(--purple)] text-white shadow-lg'
-                    : 'border-[rgba(13,13,13,0.08)] bg-white text-[var(--ink)] hover:border-[var(--purple)]'
+                    ? "border-transparent bg-[var(--purple)] text-white shadow-lg"
+                    : "border-[rgba(13,13,13,0.08)] bg-white text-[var(--ink)] hover:border-[var(--purple)]"
                 }`}
               >
                 {option}
@@ -48,45 +64,88 @@ export default function Concepts() {
 
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between mb-10">
           <p className="text-sm text-[var(--ink-soft)] max-w-2xl">
-            These concepts are the building blocks of AI literacy. Each card includes a visual explainer, a short summary, and difficulty labeling to help learners choose the right next step.
+            These concepts are the building blocks of AI literacy. Each card
+            includes a visual explainer, a short summary, and difficulty
+            labeling to help learners choose the right next step.
           </p>
-          <Link to="/" className="btn-secondary inline-flex items-center justify-center px-6 py-3 text-sm font-semibold">
+          <Link
+            to="/"
+            className="btn-secondary inline-flex items-center justify-center px-6 py-3 text-sm font-semibold"
+          >
             ← Back to homepage
           </Link>
         </div>
 
+        {/* Concept Cards Grid */}
         <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-          {filteredConcepts.map((concept) => (
-            <article
-              key={concept.id}
-              className="rounded-3xl overflow-hidden border border-[rgba(13,13,13,0.08)] bg-white shadow-sm transition-transform duration-200 hover:-translate-y-1"
-            >
-              <div
-                className="h-48 flex items-center justify-center text-7xl"
-                style={{ background: concept.gradient }}
+          {filteredConcepts.map((concept) => {
+            const TargetComponent = storyboardComponents[concept.id];
+            const isClickable =
+              TargetComponent &&
+              (concept.status === "in-progress" ||
+                concept.status === "available");
+
+            return (
+              <article
+                key={concept.id}
+                onClick={() => {
+                  if (isClickable) {
+                    setActiveStoryboardComponent(() => TargetComponent);
+                  }
+                }}
+                className={`rounded-3xl overflow-hidden border border-[rgba(13,13,13,0.08)] bg-white shadow-sm transition-transform duration-200 ${
+                  isClickable
+                    ? "cursor-pointer hover:-translate-y-1 hover:border-[var(--purple)] hover:shadow-md"
+                    : ""
+                }`}
               >
-                {concept.emoji}
-              </div>
-              <div className="p-6">
-                <div className="flex flex-wrap items-center gap-2 mb-4">
-                  <span className="rounded-full bg-[rgba(13,13,13,0.05)] px-3 py-1 text-xs uppercase tracking-widest text-[var(--ink-muted)]">
-                    {concept.status.replace('-', ' ')}
-                  </span>
-                  <span className={`rounded-full px-3 py-1 text-xs uppercase tracking-widest ${difficultyStyles[concept.difficulty]}`}>
-                    {concept.difficulty}
-                  </span>
+                <div
+                  className="h-48 flex items-center justify-center text-7xl select-none"
+                  style={{ background: concept.gradient }}
+                >
+                  {concept.emoji}
                 </div>
-                <h2 className="font-display text-2xl font-bold mb-3" style={{ color: 'var(--ink)' }}>
-                  {concept.title}
-                </h2>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--ink-soft)' }}>
-                  {concept.description}
-                </p>
-              </div>
-            </article>
-          ))}
+                <div className="p-6">
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                    <span className="rounded-full bg-[rgba(13,13,13,0.05)] px-3 py-1 text-xs uppercase tracking-widest text-[var(--ink-muted)]">
+                      {concept.status.replace("-", " ")}
+                    </span>
+                    <span
+                      className={`rounded-full px-3 py-1 text-xs uppercase tracking-widest ${difficultyStyles[concept.difficulty]}`}
+                    >
+                      {concept.difficulty}
+                    </span>
+                  </div>
+                  <h2
+                    className="font-display text-2xl font-bold mb-3"
+                    style={{ color: "var(--ink)" }}
+                  >
+                    {concept.title}
+                  </h2>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: "var(--ink-soft)" }}
+                  >
+                    {concept.description}
+                  </p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
+
+      {/* --- FLOATING MODAL TARGET BOX OVERLAY --- */}
+      {ActiveStoryboardComponent && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+          <div className="w-full max-w-2xl bg-white rounded-3xl overflow-hidden shadow-2xl">
+            
+            <ActiveStoryboardComponent
+              onClose={() => setActiveStoryboardComponent(null)}
+            />
+          </div>
+        </div>
+      )}
     </section>
-  )
+  );
 }

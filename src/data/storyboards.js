@@ -17,6 +17,7 @@ export const storyboards = [
   {
     id: 1,
     emoji: '🧠',
+    slug: "machine-learning",
     title: 'What is Machine Learning?',
     description: 'How computers learn from examples instead of being programmed with rules.',
     difficulty: 'beginner',
@@ -26,6 +27,7 @@ export const storyboards = [
   {
     id: 2,
     emoji: '🔮',
+    slug: "large-language-models",
     title: 'How do LLMs work?',
     description: 'The magic behind ChatGPT and other large language models, explained simply.',
     difficulty: 'intermediate',
@@ -35,6 +37,7 @@ export const storyboards = [
   {
     id: 3,
     emoji: '📊',
+    slug: "classification-vs-regression",
     title: 'Classification vs Regression',
     description: 'Two fundamental ways ML models make predictions — and when to use which.',
     difficulty: 'beginner',
@@ -44,6 +47,7 @@ export const storyboards = [
   {
     id: 4,
     emoji: '⚡',
+    slug: "neural-networks",
     title: 'What is a Neural Network?',
     description: 'The building blocks of modern AI — inspired by the human brain.',
     difficulty: 'beginner',
@@ -53,6 +57,7 @@ export const storyboards = [
   {
     id: 5,
     emoji: '🎯',
+    slug: "loss-and-training",
     title: 'What is Loss & Training?',
     description: 'How an AI model learns by making mistakes and correcting itself.',
     difficulty: 'intermediate',
@@ -62,6 +67,7 @@ export const storyboards = [
   {
     id: 6,
     emoji: '🗂️',
+    slug: "datasets",
     title: 'What is a Dataset?',
     description: 'Why data is the fuel of AI — and what makes a good dataset.',
     difficulty: 'beginner',

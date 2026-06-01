@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HighlightedText } from './Tooltip'
 
 const features = [
@@ -32,6 +32,23 @@ const features = [
 
 export default function SummerOfAI() {
   const [btn, SetBtn] = useState(false);
+
+  useEffect(() => {
+    if (!btn) return;
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        SetBtn(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [btn]);
+
   return (
     <section
       id="summer"

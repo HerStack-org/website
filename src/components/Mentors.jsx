@@ -2,8 +2,8 @@ import { mentors, avatarStyles } from '../data/mentors'
 
 export default function Mentors() {
   return (
-    <section id="mentors" className="py-24 px-16" style={{ background: 'white' }}>
-      <div className="flex justify-between items-end mb-12">
+    <section id="mentors" className="py-16 lg:py-24 px-5 sm:px-8 lg:px-16" style={{ background: 'white' }}>
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-10 sm:mb-12">
         <div>
           <div className="section-label">Role Models</div>
           <h2 className="section-title">Women who've walked<br />this path before you</h2>

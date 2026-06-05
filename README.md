@@ -72,8 +72,10 @@ npm run preview   # preview the production build locally
 ## Project Structure
 
 ```
-herstack/
-├── public/                  # Static assets (favicon, images)
+<!-- Fixed project name capitalization to match branding -->
+
+HerStack/
+├── public/                # Static assets (favicon, images)
 ├── src/
 │   ├── components/          # One file per section of the page
 │   │   ├── Nav.jsx

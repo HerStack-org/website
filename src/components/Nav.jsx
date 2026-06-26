@@ -18,7 +18,8 @@ export default function Nav() {
     >
       <div className="flex items-center justify-between px-6 lg:px-16 py-5">
         <Link to="/" className="flex items-center gap-2 no-underline"
-          style={{ color: 'var(--ink)', letterSpacing: '-0.02em' }}>
+          style={{ color: 'var(--ink)', letterSpacing: '-0.02em' }}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <img src="/favicon.svg" alt="" style={{ height: 24 }} />
           <span className="font-display text-2xl font-bold tracking-tight">
             Her<span style={{ color: 'var(--purple)' }}>Stack</span>

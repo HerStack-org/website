@@ -163,6 +163,18 @@ export const resources = [
     durationWeeks: 11,
     tags: ['ml', 'stanford', 'andrew-ng'],
   },
+  {
+  id: 13,
+  platform: 'Anthropic (Skilljar)',
+  title: 'Anthropic Courses',
+  url: 'https://anthropic.skilljar.com',
+  free: true,
+  hasCert: true,
+  difficulty: 'beginner',
+  stage: 1,
+  durationWeeks: 1,
+  tags: ['claude', 'api', 'mcp', 'ai'],
+},
 ]
 
 export const learningStages = [

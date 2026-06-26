@@ -57,6 +57,11 @@ export default function Concepts() {
 
         <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {filteredConcepts.map((concept) => (
+             <Link
+    key={concept.id}
+    to={`/concepts/${concept.slug}`}
+    className="block"
+  >
             <article
               key={concept.id}
               className="rounded-3xl overflow-hidden border border-[rgba(13,13,13,0.08)] bg-white shadow-sm transition-transform duration-200 hover:-translate-y-1"
@@ -84,6 +89,7 @@ export default function Concepts() {
                 </p>
               </div>
             </article>
+            </Link>
           ))}
         </div>
       </div>

@@ -15,6 +15,7 @@ import Pillars from './components/Pillars'
 import Storyboards from './components/Storyboards'
 import SummerOfAI from './components/SummerOfAI'
 import Concepts from './pages/Concepts'
+import Contact from './pages/Contact'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import MentorList from './components/MentorList'
@@ -59,6 +60,7 @@ function App() {
                     <Route path="/concepts/:slug" element={<ConceptPage />} />
                     <Route path="/blog" element={<Blog />} />
                     <Route path="/blog/:slug" element={<BlogPost />} />
+                    <Route path="/contact" element={<Contact />} />
                 </Routes>
             </main>
             <Footer />
@@ -66,5 +68,4 @@ function App() {
         </>
     );
 }
-
 export default App;

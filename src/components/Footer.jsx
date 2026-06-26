@@ -16,7 +16,7 @@ const links = {
   About: [
     { label: 'Our Mission', href: '/our-mission', internal: true },
     { label: 'GirlScript Affiliation', href: '#' },
-    { label: 'Contact', href: '#' },
+    { label: 'Contact', href: '/contact', internal: true },
     { label: 'Nominate a Mentor', href: '#' },
   ],
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HighlightedText } from './Tooltip'
 
 const features = [
@@ -32,6 +32,23 @@ const features = [
 
 export default function SummerOfAI() {
   const [btn, SetBtn] = useState(false);
+
+  useEffect(() => {
+    if (!btn) return;
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        SetBtn(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [btn]);
+
   return (
     <section
       id="summer"
@@ -97,8 +114,8 @@ export default function SummerOfAI() {
             Join the waitlist →
           </button>
           {btn && (
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-              <div className="bg-white p-3 rounded-2xl w-[90%] max-w-3xl relative">
+            <div className="fixed inset-x-0 bottom-0 top-16 bg-black bg-opacity-50 flex items-center justify-center z-50">
+              <div className="bg-white p-3 rounded-2xl w-[90%] max-w-3xl relative max-h-[90vh] overflow-y-auto">
                 <button
                   onClick={() => SetBtn(false)}
                   className="absolute top-2 right-3 text-xl"

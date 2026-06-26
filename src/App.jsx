@@ -15,6 +15,7 @@ import Pillars from './components/Pillars'
 import Storyboards from './components/Storyboards'
 import SummerOfAI from './components/SummerOfAI'
 import Concepts from './pages/Concepts'
+import MentorList from './components/MentorList';
 import './styles/globals.css'
 
 function ScrollToTop() {
@@ -43,6 +44,7 @@ export default function App() {
                     <LearningPath />
                     <Storyboards />
                     <Mentors />
+
                     <SummerOfAI />
                     <Contribute />
                     <FAQ />
@@ -50,10 +52,8 @@ export default function App() {
               } />
               <Route path="/our-mission" element={<OurMission />} />
               <Route path="/concepts" element={<Concepts />} />
-              <Route
-  path="/concepts/:slug"
-  element={<ConceptPage />}
-/>
+              <Route path="/mentorlist" element={<MentorList />} />
+              <Route path="/concepts/:slug" element={<ConceptPage />} />
           </Routes>
       </main>
       <Footer />

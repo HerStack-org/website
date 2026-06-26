@@ -1,25 +1,25 @@
 
-import { Routes, Route } from "react-router-dom";
 import BlogPostLayout from "./components/BlogPostLayout";
 import blogs from "./data/blog";
-
-import './styles/globals.css'
 import { useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
-import Nav from './components/Nav'
-import Footer from './components/Footer'
-import Hero from './components/Hero'
-import Marquee from './components/Marquee'
-import Pillars from './components/Pillars'
-import LearningPath from './components/LearningPath'
-import Storyboards from './components/Storyboards'
-import Mentors from './components/Mentors'
-import SummerOfAI from './components/SummerOfAI'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import BackToTopButton from './components/Backtotop'
+import ConceptPage from './components/ConceptPage'
 import Contribute from './components/Contribute'
 import FAQ from './components/FAQ'
-import Concepts from './pages/Concepts'
-import BackToTopButton from './components/Backtotop'
+import Footer from './components/Footer'
+import Hero from './components/Hero'
+import LearningPath from './components/LearningPath'
+import Marquee from './components/Marquee'
+import Mentors from './components/Mentors'
+import Nav from './components/Nav'
 import OurMission from './components/OurMission'
+import Pillars from './components/Pillars'
+import Storyboards from './components/Storyboards'
+import SummerOfAI from './components/SummerOfAI'
+import Concepts from './pages/Concepts'
+import MentorList from './components/MentorList';
+import './styles/globals.css'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -94,6 +94,7 @@ export default App;
                     <LearningPath />
                     <Storyboards />
                     <Mentors />
+
                     <SummerOfAI />
                     <Contribute />
                     <FAQ />
@@ -101,6 +102,8 @@ export default App;
               } />
               <Route path="/our-mission" element={<OurMission />} />
               <Route path="/concepts" element={<Concepts />} />
+              <Route path="/mentorlist" element={<MentorList />} />
+              <Route path="/concepts/:slug" element={<ConceptPage />} />
           </Routes>
       </main>
       <Footer />

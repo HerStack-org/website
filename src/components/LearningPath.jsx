@@ -2,10 +2,13 @@ import { useState } from 'react'
 import { learningStages, resources } from '../data/resources'
 import { HighlightedText } from './Tooltip'
 
-const featuredResources = resources.slice(0, 3)
-
 export default function LearningPath() {
   const [activeStage, setActiveStage] = useState(1)
+
+  const stageResources = resources.filter((r) => r.stage === activeStage)
+  const featuredResources = stageResources.length > 0
+    ? stageResources.slice(0, 3)
+    : resources.slice(0, 3)
 
   return (
     <section id="learn" className="py-16 lg:py-24 px-5 sm:px-8 lg:px-16" style={{ background: 'var(--cream)' }}>

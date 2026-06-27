@@ -35,33 +35,37 @@ export default function FAQ() {
   };
 
   return (
-    <section className="py-20 px-6 bg-white" id="faq">
+    <section className="py-20 px-6" style={{ background: 'var(--cream)' }} id="faq">
       <div className="max-w-3xl mx-auto">
-        <p className="text-center text-sm font-semibold text-purple-600 uppercase tracking-widest mb-3">
+        <p className="text-center text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: 'var(--purple)' }}>
           Got Questions?
         </p>
-        <h2 className="text-center text-3xl md:text-4xl font-bold text-gray-900 mb-12">
+        <h2 className="text-center text-3xl md:text-4xl font-bold mb-12" style={{ color: 'var(--ink)' }}>
           Frequently Asked Questions
         </h2>
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="border border-gray-200 rounded-xl overflow-hidden"
+              className="border rounded-xl overflow-hidden"
+              style={{ borderColor: 'var(--border)' }}
             >
               <button
                 onClick={() => toggle(index)}
-                className="w-full flex items-center justify-between px-6 py-4 text-left bg-white hover:bg-purple-50 transition-colors duration-200"
+                className="w-full flex items-center justify-between px-6 py-4 text-left transition-colors duration-200"
+                style={{ background: 'var(--cream)' }}
+                onMouseEnter={e => e.currentTarget.style.background = 'var(--cream-dark)'}
+                onMouseLeave={e => e.currentTarget.style.background = 'var(--cream)'}
               >
-                <span className="font-semibold text-gray-800 text-base">
+                <span className="font-semibold text-base" style={{ color: 'var(--ink)' }}>
                   {faq.question}
                 </span>
-                <span className="text-purple-600 text-xl font-bold ml-4">
+                <span className="text-xl font-bold ml-4" style={{ color: 'var(--purple)' }}>
                   {openIndex === index ? "−" : "+"}
                 </span>
               </button>
               {openIndex === index && (
-                <div className="px-6 py-4 bg-purple-50 text-gray-600 text-sm leading-relaxed border-t border-gray-100">
+                <div className="px-6 py-4 text-sm leading-relaxed border-t" style={{ background: 'var(--cream-dark)', color: 'var(--ink-soft)', borderColor: 'var(--border)' }}>
                   {faq.answer}
                 </div>
               )}

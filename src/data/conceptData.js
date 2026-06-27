@@ -36,6 +36,7 @@ function slugToTagHints(slug) {
     case "neural-networks":              return ["deep-learning", "pytorch", "python", "ml"];
     case "loss-and-training":            return ["deep-learning", "pytorch", "python", "ml"];
     case "datasets":                     return ["data", "ml", "python"];
+    case "convolutional-neural-networks": return ["deep-learning", "python", "pytorch", "tensorflow", "ml"];
     default:                             return ["ai", "ml", "python"];
   }
 }
@@ -800,5 +801,136 @@ export const conceptData = [
       { title: "What is Machine Learning?",    slug: "machine-learning",            difficulty: "Beginner", icon: "🧠" },
       { title: "Classification vs Regression", slug: "classification-vs-regression", difficulty: "Beginner", icon: "📊" },
     ],
+  },
+
+
+  {
+  slug: "convolutional-neural-networks",
+  title: "How do CNNs work?",
+  icon: "🖼️",
+  difficulty: "Intermediate",
+  estimatedTime: "15 min",
+  description:
+  "A Convolutional Neural Network (CNN) is a type of deep learning model designed to process visual data. Instead of analysing an entire image at once, CNNs scan it in small patches using filters — detecting edges, textures and patterns layer by layer until the model can recognise complex objects. CNNs power image classification, medical diagnosis, satellite imagery analysis and wildfire detection systems.",
+  storyboard: [
+    {
+      title: "The Image is Just Numbers",
+      description:
+        "Every pixel is a number — 0 for black, 255 for white, with shades in between. A colour image has three grids like this (Red, Green, Blue). This is all a CNN ever sees.",
+    },
+    {
+      title: "Filters Slide Across the Image",
+      description:
+        "A filter is a tiny 3×3 grid of numbers. It slides across every patch of the image, multiplies its values with the pixels underneath, and adds them up into one number — telling us how strongly that patch matches the pattern the filter is looking for.",
+    },
+    {
+      title: "Feature Maps Show What Was Found",
+      description:
+        "After a filter scans the whole image, the result is a feature map — a new grid where bright spots mean 'pattern found here'. One filter might find vertical edges, another finds curves. A CNN uses dozens of filters at once.",
+    },
+    {
+      title: "ReLU Cuts the Negatives",
+      description:
+        "After convolution, some values are negative — meaning 'definitely not here'. ReLU (Rectified Linear Unit) sets all negatives to zero and keeps positives as-is. This small step is what lets CNNs learn complex, non-linear patterns.",
+    },
+    {
+      title: "Pooling Shrinks the Map",
+      description:
+        "Max pooling takes each 2×2 region and keeps only the largest value. This makes the feature map smaller and faster to process — while keeping the important signals. It also means the CNN doesn't care exactly where a pattern appeared, just that it appeared.",
+    },
+    {
+      title: "Final Layer Makes the Prediction",
+      description:
+        "After several conv → ReLU → pool rounds, the feature maps are flattened into a list of numbers and passed to a regular neural network layer. This outputs a probability for each class — '94% cat, 3% dog' — and the highest one wins.",
+    },
+  ],
+  featuredVideo: {
+    title: "But what are Convolutional Neural Networks? | 3Blue1Brown",
+    youtubeId: "KuXjwB4LzSA",
+    description:
+      "Grant Sanderson's animated deep-dive into CNNs — how filters work, what feature maps represent, and why pooling matters. Part of the neural network series.",
+  },
+  resources: [
+    {
+      type: "video",
+      title: "CS231n: Convolutional Neural Networks for Visual Recognition — Stanford",
+      url: "https://www.youtube.com/watch?v=vT1JzLTH4G4",
+      meta: "Stanford · Andrej Karpathy · The gold standard CNN lecture · Free",
+      difficulty: "Intermediate",
+      free: true,
+    },
+    {
+      type: "video",
+      title: "CNN Explainer — Visual walkthrough of every layer",
+      url: "https://www.youtube.com/watch?v=f0t-OCG79-U",
+      meta: "Computerphile · Clear visual breakdown of convolution · Free",
+      difficulty: "Beginner",
+      free: true,
+    },
+    {
+      type: "article",
+      title: "A Beginner's Guide to CNNs — Towards Data Science",
+      url: "https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53",
+      meta: "Towards Data Science · Sumit Saha · Visual step-by-step explainer · Free",
+      difficulty: "Beginner",
+      free: true,
+    },
+    {
+      type: "article",
+      title: "Conv Nets: A Modular Perspective — Colah's Blog",
+      url: "https://colah.github.io/posts/2014-07-Conv-Nets-Modular/",
+      meta: "Chris Olah (Anthropic) · Intuition-first visual essay on CNNs · Free",
+      difficulty: "Intermediate",
+      free: true,
+    },
+    {
+      type: "docs",
+      title: "CNN Explainer — Interactive Visual Tool",
+      url: "https://poloclub.github.io/cnn-explainer/",
+      meta: "Georgia Tech · Watch a CNN classify images live in your browser · Free",
+      difficulty: "Beginner",
+      free: true,
+    },
+    {
+      type: "docs",
+      title: "PyTorch: Training a Classifier — Official Tutorial",
+      url: "https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html",
+      meta: "PyTorch · Build and train a CNN on CIFAR-10 from scratch · Free",
+      difficulty: "Intermediate",
+      free: true,
+    },
+    {
+      type: "github",
+      title: "TensorFlow CNN Tutorial — Image Classification",
+      url: "https://github.com/tensorflow/docs/blob/master/site/en/tutorials/images/cnn.ipynb",
+      meta: "TensorFlow · Official Jupyter notebook · CIFAR-10 · Free",
+      difficulty: "Intermediate",
+      free: true,
+    },
+    {
+      type: "article",
+      title: "ImageNet Classification with Deep CNNs — Krizhevsky et al. (AlexNet, 2012)",
+      url: "https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf",
+      meta: "NeurIPS · The paper that started the deep learning revolution in vision · Seminal",
+      difficulty: "Advanced",
+      free: true,
+    },
+  ],
+  nextConcepts: [
+    {
+      title: "Neural Networks",
+      slug: "neural-networks",
+      difficulty: "Beginner",
+      icon: "⚡",
+      reason: "CNNs are built on top of regular neural networks — understanding the basics first makes everything click.",
+    },
+    {
+      title: "Loss & Training",
+      slug: "loss-and-training",
+      difficulty: "Intermediate",
+      icon: "🎯",
+      reason: "Once you know what a CNN is, the next question is how it actually learns — that's gradient descent and backprop.",
+    },
+  ],
   },
 ];

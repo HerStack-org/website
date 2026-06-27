@@ -113,7 +113,7 @@ export default function OurMission() {
       {/* Mission Pillars */}
       <section
         className="py-24 px-16"
-        style={{ background: 'white' }}
+        style={{ background: 'var(--cream)' }}
       >
         <div className="mb-14">
           <div className="section-label">What We Believe</div>
@@ -167,7 +167,7 @@ export default function OurMission() {
               <div
                 className="font-display font-bold text-6xl mb-8"
                 style={{
-                  color: 'rgba(0,0,0,0.05)',
+                  color: 'color-mix(in srgb, var(--ink) 5%, transparent)',
                   letterSpacing: '-0.04em',
                 }}
               >
@@ -204,7 +204,7 @@ export default function OurMission() {
       {/* Vision */}
       <section
         className="py-24 px-16"
-        style={{ background: 'var(--ink)' }}
+        style={{ background: '#0D0D0D' }}
       >
         <div className="max-w-4xl">
           <div

@@ -27,7 +27,7 @@ const linkStyle = {
 
 export default function Footer() {
   return (
-      <footer className="px-5 sm:px-8 lg:px-16 pt-16 pb-8" style={{ background: 'var(--ink)' }}>
+      <footer className="px-5 sm:px-8 lg:px-16 pt-16 pb-8" style={{ background: '#0D0D0D' }}>
         <div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12 pb-12"
             style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}

@@ -20,6 +20,15 @@
     --border: rgba(13, 13, 13, 0.1);
   }
 
+  .dark {
+    --ink: #FDFAF5;
+    --ink-soft: #E5E0D8;
+    --ink-muted: #888;
+    --cream: #0D0D0D;
+    --cream-dark: #1A1A1A;
+    --border: rgba(253, 250, 245, 0.1);
+  }
+
   html {
     scroll-behavior: smooth;
   }

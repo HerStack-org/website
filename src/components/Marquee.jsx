@@ -7,7 +7,7 @@ export default function Marquee() {
   const doubled = [...items, ...items]
 
   return (
-    <div className="overflow-hidden flex py-6" style={{ background: 'var(--ink)' }}>
+    <div className="overflow-hidden flex py-6" style={{ background: '#0D0D0D' }}>
       <div className="flex gap-12 animate-marquee whitespace-nowrap flex-shrink-0">
         {doubled.map((item, i) => (
           <span

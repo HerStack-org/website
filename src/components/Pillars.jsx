@@ -24,7 +24,7 @@ const pillars = [
 
 export default function Pillars() {
   return (
-    <section id="about" className="py-16 lg:py-24 px-5 sm:px-8 lg:px-16" style={{ background: 'white' }}>
+    <section id="about" className="py-16 lg:py-24 px-5 sm:px-8 lg:px-16" style={{ background: 'var(--cream)' }}>
       <div className="mb-16 max-w-2xl">
         <div className="section-label">What we do</div>
         <h2 className="section-title">Everything a girl needs<br />to start building with AI</h2>
@@ -39,9 +39,9 @@ export default function Pillars() {
           <div
             key={num}
             className="relative p-10 transition-colors duration-300 cursor-default"
-            style={{ background: 'white' }}
-            onMouseEnter={e => e.currentTarget.style.background = 'var(--cream)'}
-            onMouseLeave={e => e.currentTarget.style.background = 'white'}
+            style={{ background: 'var(--cream)' }}
+            onMouseEnter={e => e.currentTarget.style.background = 'var(--cream-dark)'}
+            onMouseLeave={e => e.currentTarget.style.background = 'var(--cream)'}
           >
             <div
               className="absolute top-6 right-6 font-display font-bold leading-none select-none"

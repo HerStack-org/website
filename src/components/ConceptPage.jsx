@@ -317,7 +317,7 @@ export default function ConceptPage() {
 
   if (!concept) {
     return (
-      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 24, color: "white", background: "var(--ink)" }}>
+      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 24, color: "white", background: '#0D0D0D' }}>
         <p style={{ fontSize: 18 }}>Concept not found</p>
         <Link to="/concepts" style={{ borderRadius: 99, border: "1px solid rgba(255,255,255,0.2)", padding: "8px 20px", fontSize: 14, color: "white", textDecoration: "none" }}>
           ← Back to all concepts
@@ -351,7 +351,7 @@ export default function ConceptPage() {
   const chip = DIFFICULTY_CHIP[diffKey] ?? DIFFICULTY_CHIP.beginner;
 
   return (
-    <main style={{ minHeight: "100vh", background: "var(--ink)" }}>
+    <main style={{ minHeight: "100vh", background: '#0D0D0D' }}>
 
 
       <section style={{ position: "relative", overflow: "hidden" }}>

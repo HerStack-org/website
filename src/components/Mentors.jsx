@@ -5,7 +5,7 @@ import MentorList from './MentorList';
 
 export default function Mentors() {
   return (
-    <section id="mentors" className="py-16 lg:py-24 px-5 sm:px-8 lg:px-16" style={{ background: 'white' }}>
+    <section id="mentors" className="py-16 lg:py-24 px-5 sm:px-8 lg:px-16" style={{ background: 'var(--cream)' }}>
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-10 sm:mb-12">
         <div>
           <div className="section-label">Role Models</div>
@@ -22,7 +22,7 @@ export default function Mentors() {
             style={{ border: '1px solid var(--border)', background: 'var(--cream)' }}
             onMouseEnter={e => {
               e.currentTarget.style.borderColor = 'var(--purple)'
-              e.currentTarget.style.background = 'white'
+              e.currentTarget.style.background = 'var(--cream-dark)'
               e.currentTarget.style.transform = 'translateY(-2px)'
             }}
             onMouseLeave={e => {

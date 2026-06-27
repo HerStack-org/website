@@ -25,19 +25,19 @@ export default function Contribute() {
             <div
               key={title}
               className="rounded-2xl p-6 transition-all duration-200 cursor-default"
-              style={{ background: 'white', border: '1px solid var(--border)' }}
+              style={{ background: 'var(--cream-dark)', border: '1px solid var(--border)' }}
               onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--purple)'}
               onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}
             >
               <div className="text-3xl mb-3">{icon}</div>
-              <h4 className="font-display font-bold text-base mb-1.5" style={{ color: 'var(--ink)' }}>{title}</h4>
+              <h4 className="font-display font-bold text-base mb-1.5" style={{ color: '#0D0D0D' }}>{title}</h4>
               <p className="text-xs leading-relaxed font-light" style={{ color: 'var(--ink-muted)' }}>{description}</p>
             </div>
           ))}
         </div>
 
         {/* GitHub CTA */}
-        <div className="rounded-2xl p-10" style={{ background: 'var(--ink)' }}>
+        <div className="rounded-2xl p-10" style={{ background: '#0D0D0D' }}>
           <h3
             className="font-display font-bold text-2xl mb-3"
             style={{ color: 'white', letterSpacing: '-0.02em' }}
@@ -52,7 +52,7 @@ export default function Contribute() {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold no-underline transition-all duration-200"
-            style={{ background: 'white', color: 'var(--ink)', fontSize: '0.9rem' }}
+            style={{ background: 'var(--cream-dark)', color: '#0D0D0D', fontSize: '0.9rem' }}
             onMouseEnter={e => {
               e.currentTarget.style.background = 'var(--purple)'
               e.currentTarget.style.color = 'white'

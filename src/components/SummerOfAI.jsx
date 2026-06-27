@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HighlightedText } from './Tooltip'
 
 const features = [
@@ -32,10 +32,27 @@ const features = [
 
 export default function SummerOfAI() {
   const [btn, SetBtn] = useState(false);
+
+  useEffect(() => {
+    if (!btn) return;
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        SetBtn(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [btn]);
+
   return (
     <section
       id="summer"
-      className="py-16 lg:py-24 px-5 sm:px-8 lg:px-16 relative overflow-hidden"
+      className="py-24 px-16 relative overflow-hidden"
       style={{ background: 'var(--purple)' }}
     >
       {/* Big background year text */}
@@ -75,11 +92,8 @@ export default function SummerOfAI() {
             <br />
             Summer of AI
           </h2>
-          <p
-            className="text-lg leading-relaxed font-light mb-8"
-            style={{ color: "rgba(255,255,255,0.75)", maxWidth: 480 }}
-          >
-            <HighlightedText text="An open source program where girls contribute to real AI projects, get mentored by women in the industry, and earn a certificate that actually means something." />
+          <p className="text-lg leading-relaxed font-light mb-8" style={{ color: 'rgba(255,255,255,0.75)', maxWidth: 480 }}>
+            An open source program where girls contribute to real AI projects, get mentored by women in the industry, and earn a certificate that actually means something.
           </p>
           <button
             onClick={() => SetBtn(true)}
@@ -97,8 +111,8 @@ export default function SummerOfAI() {
             Join the waitlist →
           </button>
           {btn && (
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-              <div className="bg-white p-3 rounded-2xl w-[90%] max-w-3xl relative">
+            <div className="fixed inset-x-0 bottom-0 top-16 bg-black bg-opacity-50 flex items-center justify-center z-50">
+              <div className="bg-white p-3 rounded-2xl w-[90%] max-w-3xl relative max-h-[90vh] overflow-y-auto">
                 <button
                   onClick={() => SetBtn(false)}
                   className="absolute top-2 right-3 text-xl"
@@ -130,24 +144,13 @@ export default function SummerOfAI() {
             >
               <span className="text-2xl flex-shrink-0">{icon}</span>
               <div>
-                <h4
-                  className="font-display font-bold text-sm mb-1"
-                  style={{ color: "white" }}
-                >
-                  {title}
-                </h4>
-                <p
-                  className="text-xs leading-relaxed font-light"
-                  style={{ color: "rgba(255,255,255,0.65)" }}
-                >
-                  <HighlightedText text={description} />
-                </p>
+                <h4 className="font-display font-bold text-sm mb-1" style={{ color: 'white' }}>{title}</h4>
+                <p className="text-xs leading-relaxed font-light" style={{ color: 'rgba(255,255,255,0.65)' }}>{description}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
     </section>
-      
-  );
+  )
 }

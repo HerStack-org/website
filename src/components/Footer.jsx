@@ -16,7 +16,7 @@ const links = {
   About: [
     { label: 'Our Mission', href: '/our-mission', internal: true },
     { label: 'GirlScript Affiliation', href: '#' },
-    { label: 'Contact', href: '#' },
+    { label: 'Contact', href: '/contact', internal: true },
     { label: 'Nominate a Mentor', href: '#' },
   ],
 }
@@ -27,7 +27,7 @@ const linkStyle = {
 
 export default function Footer() {
   return (
-      <footer className="px-16 pt-16 pb-8" style={{ background: 'var(--ink)' }}>
+      <footer className="px-5 sm:px-8 lg:px-16 pt-16 pb-8" style={{ background: 'var(--ink)' }}>
         <div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12 pb-12"
             style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}

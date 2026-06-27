@@ -1,4 +1,7 @@
 import { mentors, avatarStyles } from '../data/mentors'
+import {Link} from 'react-router-dom';
+import MentorList from './MentorList';
+
 
 export default function Mentors() {
   return (
@@ -8,7 +11,7 @@ export default function Mentors() {
           <div className="section-label">Role Models</div>
           <h2 className="section-title">Women who've walked<br />this path before you</h2>
         </div>
-        <a href="#" className="btn-secondary hidden md:inline-flex">See all mentors →</a>
+        <Link to="/mentorlist" className="btn-secondary hidden md:inline-flex">See all mentors →</Link>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">

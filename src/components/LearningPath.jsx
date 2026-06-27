@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { learningStages, resources } from '../data/resources'
 import { HighlightedText } from './Tooltip'
+import ResourceHeatmap from './ResourceHeatmap'
+import { recordInteraction } from '../hooks/useHeatmap'
 
 const featuredResources = resources.slice(0, 3)
 
@@ -58,6 +60,11 @@ export default function LearningPath() {
               </button>
             ))}
           </div>
+
+          {/* Heatmap below steps */}
+          <div className="mt-10">
+            <ResourceHeatmap />
+          </div>
         </div>
 
         {/* Right: Resource cards */}
@@ -68,6 +75,7 @@ export default function LearningPath() {
               href={r.url}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => recordInteraction(r.tags ?? [])}
               className="absolute no-underline transition-transform duration-300 hover:z-20"
               style={{
                 top: i * 80,

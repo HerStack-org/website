@@ -74,4 +74,14 @@ export const storyboards = [
     status: 'coming-soon',
     gradient: 'linear-gradient(135deg, var(--ink-soft), var(--purple))',
   },
+  {
+  id: 7,
+  emoji: '🖼️',
+  slug: "convolutional-neural-networks",
+  title: 'How do CNNs work?',
+  description: 'How computers see images — filters, feature maps, and pattern detection explained.',
+  difficulty: 'intermediate',
+  status: 'in-progress',
+  gradient: 'linear-gradient(135deg, #1D9E75, #185FA5)',
+  },
 ]

@@ -64,22 +64,15 @@ export default function LearningPath() {
         </div>
 
         {/* Right: Resource cards */}
-        <div className="hidden lg:block relative" style={{ height: 400 }}>
+        <div className="flex flex-col gap-4 relative" style={{ height: 400 }}>
           {featuredResources.map((r, i) => (
             <a
               key={r.id}
               href={r.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="absolute no-underline transition-transform duration-300 hover:z-20"
-              style={{
-                top: i * 80,
-                left: i % 2 === 0 ? 40 : 10,
-                transform: `rotate(${[-3, 1.5, -1][i]}deg)`,
-                zIndex: i + 1,
-                width: 300,
-              }}
-            >
+              className="relative no-underline transition-transform duration-300 hover:z-20"
+              >
               <div
                 className="rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl"
                 style={{ background: 'var(--cream-dark)', border: '1px solid var(--border)', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}

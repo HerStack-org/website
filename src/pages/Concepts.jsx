@@ -37,7 +37,7 @@ export default function Concepts() {
                 className={`rounded-full border px-4 py-2 text-sm font-semibold transition duration-200 ${
                   filter === option
                     ? 'border-transparent bg-[var(--purple)] text-white shadow-lg'
-                    : 'border-[rgba(13,13,13,0.08)] bg-white text-[var(--ink)] hover:border-[var(--purple)]'
+                    : 'border-[var(--border)] bg-[var(--cream-dark)] text-[var(--ink)] hover:border-[var(--purple)]'
                 }`}
               >
                 {option}
@@ -64,7 +64,8 @@ export default function Concepts() {
   >
             <article
               key={concept.id}
-              className="rounded-3xl overflow-hidden border border-[rgba(13,13,13,0.08)] bg-white shadow-sm transition-transform duration-200 hover:-translate-y-1"
+              className="rounded-3xl overflow-hidden border transition-transform duration-200 hover:-translate-y-1"
+              style={{ background: 'var(--cream-dark)', borderColor: 'var(--border)' }}
             >
               <div
                 className="h-48 flex items-center justify-center text-7xl"

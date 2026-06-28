@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { learningStages, resources } from '../data/resources'
 import { HighlightedText } from './Tooltip'
+import ResourceHeatmap from './ResourceHeatmap'
+import { recordInteraction } from '../hooks/useHeatmap'
 
 export default function LearningPath() {
   const [activeStage, setActiveStage] = useState(1)
@@ -88,69 +90,48 @@ export default function LearningPath() {
                   </span>
                 </div>
               </button>
+            ))}
+          </div>
 
-              {/* Horizontal connector: only when this stage has a paired card, desktop only */}
-              <div className="hidden lg:flex items-center justify-center" style={{ width: 64 }}>
-                {resource && (
-                  <div className="flex items-center w-full">
-                    <div
-                      className="flex-1 transition-all duration-500 ease-out"
-                      style={{
-                        height: 0,
-                        borderTop: `2px dashed ${isActive ? 'var(--purple)' : 'var(--border)'}`,
-                        opacity: isActive ? 1 : 0.6,
-                      }}
-                    />
-                    <div
-                      className="w-2.5 h-2.5 rounded-full border-2 flex-shrink-0 transition-all duration-300"
-                      style={{
-                        borderColor: isActive ? 'var(--purple)' : 'var(--border)',
-                        background: isActive ? 'var(--purple)' : 'var(--cream)',
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
+          {/* Heatmap below steps */}
+          <div className="mt-10">
+            <ResourceHeatmap />
+          </div>
+        </div>
 
-              {/* Card column */}
-              <div className="hidden lg:flex items-center" style={{ minHeight: 168 }}>
-                {resource && (
-                  <a
-                    href={resource.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="no-underline block flex-shrink-0 transition-all duration-300 ease-out"
-                    style={{
-                      width: 300,
-                      height: 168,
-                      transformOrigin: 'center left',
-                      transform: isActive ? 'translateY(-2px) scale(1.02)' : 'translateY(0) scale(1)',
-                    }}
-                  >
-                    <div
-                      className="rounded-2xl p-6 w-full h-full flex flex-col justify-center transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl"
-                      style={{
-                        background: 'var(--cream-dark)',
-                        border: `1px solid ${isActive ? 'var(--purple)' : 'var(--border)'}`,
-                        boxShadow: isActive
-                          ? '0 12px 32px rgba(0,0,0,0.12)'
-                          : '0 4px 24px rgba(0,0,0,0.06)',
-                      }}
-                    >
-                      <div className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: 'var(--ink-muted)' }}>
-                        {resource.platform}
-                      </div>
-                      <div className="font-display font-bold text-base mb-3" style={{ color: 'var(--ink)' }}>
-                        {resource.title}
-                      </div>
-                      <div className="flex gap-2 flex-wrap">
-                        {resource.free && <Badge color="teal">Free</Badge>}
-                        {resource.hasCert && <Badge color="amber">Certificate</Badge>}
-                        <Badge color="purple">{resource.difficulty}</Badge>
-                      </div>
-                    </div>
-                  </a>
-                )}
+        {/* Right: Resource cards */}
+        <div className="hidden lg:block relative" style={{ height: 400 }}>
+          {featuredResources.map((r, i) => (
+            <a
+              key={r.id}
+              href={r.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => recordInteraction(r.tags ?? [])}
+              className="absolute no-underline transition-transform duration-300 hover:z-20"
+              style={{
+                top: i * 80,
+                left: i % 2 === 0 ? 40 : 10,
+                transform: `rotate(${[-3, 1.5, -1][i]}deg)`,
+                zIndex: i + 1,
+                width: 300,
+              }}
+            >
+              <div
+                className="rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl"
+                style={{ background: 'var(--cream-dark)', border: '1px solid var(--border)', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}
+              >
+                <div className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: 'var(--ink-muted)' }}>
+                  {r.platform}
+                </div>
+                <div className="font-display font-bold text-base mb-3" style={{ color: 'var(--ink)' }}>
+                  {r.title}
+                </div>
+                <div className="flex gap-2 flex-wrap">
+                  {r.free && <Badge color="teal">Free</Badge>}
+                  {r.hasCert && <Badge color="amber">Certificate</Badge>}
+                  <Badge color="purple">{r.difficulty}</Badge>
+                </div>
               </div>
             </div>
           )

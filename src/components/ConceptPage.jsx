@@ -1,7 +1,8 @@
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { getConceptBySlug } from "../data/conceptData";
+import { recordInteraction } from "../hooks/useHeatmap";
 
 function extractYouTubeId(url = "") {
   // handles youtu.be/ID, watch?v=ID, embed/ID
@@ -81,7 +82,7 @@ function YouTubeVideoPlayer({ url, title }) {
 
 // resource card
 
-function LearningResourceCard({ resource }) {
+function LearningResourceCard({ resource, onInteract }) {
   const [expanded, setExpanded] = useState(false);
   const isVideo = resource.type === "video";
   const hasEmbed = isVideo && !!extractYouTubeId(resource.url);
@@ -143,7 +144,7 @@ function LearningResourceCard({ resource }) {
         >
           {hasEmbed && (
             <button
-              onClick={() => setExpanded((v) => !v)}
+              onClick={() => { setExpanded((v) => !v); if (onInteract) onInteract(); }}
               style={{
                 background: expanded
                   ? "rgba(168,85,247,0.25)"
@@ -172,6 +173,7 @@ function LearningResourceCard({ resource }) {
             href={resource.url}
             target="_blank"
             rel="noreferrer"
+            onClick={() => { if (onInteract) onInteract(); }}
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -335,6 +337,33 @@ export default function ConceptPage() {
     });
   }, [concept.resources, featuredId]);
 
+  // Derive concept-level tags from slug for heatmap tracking
+  const conceptTags = useMemo(() => {
+    const slugTagMap = {
+      'machine-learning':             ['ml', 'ai', 'data', 'python'],
+      'large-language-models':        ['llm', 'ai', 'prompting'],
+      'classification-vs-regression': ['ml', 'data', 'python'],
+      'neural-networks':              ['deep-learning', 'ml', 'python'],
+      'loss-and-training':            ['deep-learning', 'ml', 'python'],
+      'datasets':                     ['data', 'ml', 'python'],
+    };
+    return slugTagMap[slug] ?? ['ai', 'ml'];
+  }, [slug]);
+
+  // Track page visit for heatmap
+  useEffect(() => {
+    if (conceptTags.length > 0) {
+      recordInteraction(conceptTags);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug]);
+
+  // Called whenever a user opens a resource on this concept page
+  const handleResourceInteract = useCallback((resourceTags) => {
+    const tags = resourceTags && resourceTags.length > 0 ? resourceTags : conceptTags;
+    recordInteraction(tags);
+  }, [conceptTags]);
+
   const resourceTypes = useMemo(() => {
     const set = new Set(rawResources.map((r) => r.type).filter(Boolean));
     return Array.from(set);
@@ -345,6 +374,7 @@ export default function ConceptPage() {
     if (resourceType === "all") return rawResources;
     return rawResources.filter((r) => r.type === resourceType);
   }, [rawResources, resourceType]);
+
 
   const videoCount = rawResources.filter((r) => r.type === "video").length;
   const diffKey = (concept.difficulty || "").toLowerCase();
@@ -539,7 +569,11 @@ export default function ConceptPage() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {filteredResources.map((resource) => (
-              <LearningResourceCard key={resource.title + resource.url} resource={resource} />
+              <LearningResourceCard
+                key={resource.title + resource.url}
+                resource={resource}
+                onInteract={() => handleResourceInteract(resource.tags)}
+              />
             ))}
           </div>
 

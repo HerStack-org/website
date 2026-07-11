@@ -1,12 +1,23 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { storyboards } from '../data/storyboards'
+import { recordInteraction } from '../hooks/useHeatmap'
 
 const difficultyOptions = ['All', 'Beginner', 'Intermediate', 'Advanced']
 const difficultyStyles = {
   beginner: 'bg-[var(--purple-light)] text-[var(--purple)]',
   intermediate: 'bg-[var(--teal-light)] text-[var(--teal)]',
   advanced: 'bg-[var(--amber-light)] text-[var(--amber)]',
+}
+
+// Map each concept slug to relevant tags for heatmap tracking
+const slugTags = {
+  'machine-learning':             ['ml', 'ai', 'python'],
+  'large-language-models':        ['llm', 'ai', 'prompting'],
+  'classification-vs-regression': ['ml', 'data', 'python'],
+  'neural-networks':              ['deep-learning', 'ml'],
+  'loss-and-training':            ['deep-learning', 'ml'],
+  'datasets':                     ['data', 'ml'],
 }
 
 export default function Concepts() {
@@ -61,6 +72,7 @@ export default function Concepts() {
     key={concept.id}
     to={`/concepts/${concept.slug}`}
     className="block"
+    onClick={() => recordInteraction(slugTags[concept.slug] ?? ['ai'])}
   >
             <article
               key={concept.id}

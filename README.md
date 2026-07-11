@@ -6,8 +6,7 @@ HerStack is an open source community platform helping school girls and young wom
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-
-[//]: # ([![GirlScript]&#40;https://img.shields.io/badge/GirlScript-Summer%20of%20Code-orange&#41;]&#40;https://gssoc.girlscript.tech/&#41;)
+[![GirlScript](https://img.shields.io/badge/GirlScript-Summer%20of%20Code-orange)](https://gssoc.girlscript.tech/)
 
 ---
 
@@ -19,7 +18,7 @@ HerStack is three things working together:
 - **AI Concepts Visualized** — Machine learning, neural networks, LLMs — explained through illustrated storyboards that anyone can understand.
 - **Women Mentors** — Real women working in AI across India's top companies and startups, with their LinkedIn profiles so girls can see what the path looks like.
 
-[//]: # (And coming in 2026: **HerStack Summer of AI** — an open source program where girls contribute to real AI projects, get paired with women mentors, and earn a certificate.)
+And coming in 2026: **HerStack Summer of AI** — an open source program where girls contribute to real AI projects, get paired with women mentors, and earn a certificate.
 
 ---
 
@@ -37,6 +36,45 @@ HerStack is three things working together:
 | [React 18](https://react.dev/) | UI framework |
 | [Tailwind CSS](https://tailwindcss.com/) | Styling |
 | [Vercel](https://vercel.com/) | Hosting |
+
+---
+
+## System Architecture
+
+```mermaid
+graph TD
+    subgraph "Data Layer (src/data/)"
+        A[mentors.js]
+        B[resources.js]
+        C[storyboards.js]
+    end
+
+    subgraph "Core App Shell"
+        Root[App.jsx]
+        Nav[Nav.jsx]
+        Footer[Footer.jsx]
+    end
+
+    subgraph "Presentation Layer (src/components/)"
+        D[Mentors.jsx]
+        E[LearningPath.jsx]
+        F[Storyboards.jsx]
+        G[SummerOfAI.jsx]
+    end
+
+    Root --> Nav
+    Root --> G
+    Root --> Footer
+
+    %% Data Ingestion Mapping
+    A -->|Maps profiles| D
+    B -->|Maps courses| E
+    C -->|Maps concept UI| F
+
+    Root --> D
+    Root --> E
+    Root --> F
+```
 
 ---
 
@@ -118,14 +156,16 @@ See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full guide. Quick summary:
 
 ---
 
-[//]: # ()
-[//]: # (## GirlScript Summer of Code)
+## GirlScript Summer of Code
 
-[//]: # ()
-[//]: # (This project is registered with **GirlScript Summer of Code &#40;GSSoC&#41;**. If you're a GSSoC participant, check our issues for tasks labeled `gssoc`.)
+This project is an official part of **GirlScript Summer of Code (GSSoC)**! 
 
-[//]: # ()
-[//]: # (---)
+If you are a participant looking to contribute:
+1. Head over to our **[Issues](../../issues)** tab.
+2. Filter by the `gssoc` or `good first issue` labels.
+3. Comment on the issue you'd like to claim before starting work to avoid overlapping Pull Requests.
+
+---
 
 ## Community
 

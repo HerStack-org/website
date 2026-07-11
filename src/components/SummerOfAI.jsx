@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { HighlightedText } from './Tooltip'
 
 const features = [
   {
@@ -28,17 +27,15 @@ const features = [
   },
 ];
 
-
-
 export default function SummerOfAI() {
-  const [btn, SetBtn] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    if (!btn) return;
+    if (!showModal) return;
 
     const handleEscape = (event) => {
       if (event.key === "Escape") {
-        SetBtn(false);
+        setShowModal(false);
       }
     };
 
@@ -47,13 +44,13 @@ export default function SummerOfAI() {
     return () => {
       window.removeEventListener("keydown", handleEscape);
     };
-  }, [btn]);
+  }, [showModal]);
 
   return (
     <section
       id="summer"
       className="py-24 px-16 relative overflow-hidden"
-      style={{ background: 'var(--purple)' }}
+      style={{ background: "var(--purple)" }}
     >
       {/* Big background year text */}
       <div
@@ -92,11 +89,16 @@ export default function SummerOfAI() {
             <br />
             Summer of AI
           </h2>
-          <p className="text-lg leading-relaxed font-light mb-8" style={{ color: 'rgba(255,255,255,0.75)', maxWidth: 480 }}>
-            An open source program where girls contribute to real AI projects, get mentored by women in the industry, and earn a certificate that actually means something.
+          <p
+            className="text-lg leading-relaxed font-light mb-8"
+            style={{ color: "rgba(255,255,255,0.75)", maxWidth: 480 }}
+          >
+            An open source program where girls contribute to real AI projects,
+            get mentored by women in the industry, and earn a certificate
+            that actually means something.
           </p>
           <button
-            onClick={() => SetBtn(true)}
+            onClick={() => setShowModal(true)}
             className="inline-flex items-center gap-2 font-semibold no-underline px-8 py-3.5 rounded-full transition-all duration-200"
             style={{ background: "white", color: "var(--purple)" }}
             onMouseEnter={(e) => {
@@ -110,17 +112,33 @@ export default function SummerOfAI() {
           >
             Join the waitlist →
           </button>
-          {btn && (
-            <div className="fixed inset-x-0 bottom-0 top-16 bg-black bg-opacity-50 flex items-center justify-center z-50">
+
+          {showModal && (
+            <div
+              className="fixed inset-x-0 bottom-0 top-16 bg-black bg-opacity-50 flex items-center justify-center z-50"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Waitlist form"
+              onClick={(e) => {
+                if (e.target === e.currentTarget) setShowModal(false);
+              }}
+            >
               <div className="bg-white p-3 rounded-2xl w-[90%] max-w-3xl relative max-h-[90vh] overflow-y-auto">
                 <button
-                  onClick={() => SetBtn(false)}
+                  onClick={() => setShowModal(false)}
                   className="absolute top-2 right-3 text-xl"
+                  aria-label="Close waitlist form"
                 >
                   ✕
                 </button>
+                {/*
+                  NOTE: forms.gle is a short redirect link and Google blocks
+                  framing on that redirect (X-Frame-Options), so it will not
+                  render inside an iframe. Use the actual embed URL instead:
+                  https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true
+                */}
                 <iframe
-                  src="https://forms.gle/PzBBynQs9WtCGByv6"
+                  src="https://docs.google.com/forms/d/e/REPLACE_WITH_FORM_ID/viewform?embedded=true"
                   width="100%"
                   height="600"
                   style={{ border: "none" }}
@@ -132,25 +150,149 @@ export default function SummerOfAI() {
         </div>
 
         {/* Right: Feature cards */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-5">
           {features.map(({ icon, title, description }) => (
             <div
               key={title}
-              className="flex items-start gap-4 rounded-xl p-5"
+              className="
+                group
+                relative
+                overflow-hidden
+                rounded-2xl
+                p-6
+                flex
+                items-start
+                gap-5
+                backdrop-blur-xl
+                transition-all
+                duration-500
+                cursor-pointer
+                hover:-translate-y-2
+                hover:scale-[1.02]
+              "
               style={{
-                background: "rgba(255,255,255,0.12)",
+                background: "rgba(255,255,255,0.10)",
                 border: "1px solid rgba(255,255,255,0.15)",
               }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow =
+                  "0 20px 50px rgba(124,58,237,.35)";
+                e.currentTarget.style.borderColor = "rgba(216,180,254,.6)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.14)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = "none";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.10)";
+              }}
             >
-              <span className="text-2xl flex-shrink-0">{icon}</span>
-              <div>
-                <h4 className="font-display font-bold text-sm mb-1" style={{ color: 'white' }}>{title}</h4>
-                <p className="text-xs leading-relaxed font-light" style={{ color: 'rgba(255,255,255,0.65)' }}>{description}</p>
+              {/* Gradient Overlay */}
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(255,255,255,.08), rgba(255,255,255,.02), rgba(168,85,247,.15))",
+                }}
+              />
+
+              {/* Glow */}
+              <div
+                className="absolute -right-10 -top-10 w-40 h-40 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: "rgba(168,85,247,.25)",
+                }}
+              />
+
+              {/* Content */}
+              <div className="relative flex items-start gap-5 w-full">
+                {/* Icon */}
+                <div
+                  className="
+                    h-14
+                    w-14
+                    rounded-2xl
+                    flex
+                    items-center
+                    justify-center
+                    text-2xl
+                    transition-all
+                    duration-500
+                    group-hover:scale-110
+                    group-hover:rotate-6
+                  "
+                  style={{
+                    background: "rgba(255,255,255,.08)",
+                  }}
+                >
+                  {icon}
+                </div>
+
+                {/* Text */}
+                <div className="flex-1">
+                  <h4
+                    className="
+                      font-display
+                      font-bold
+                      text-lg
+                      mb-2
+                      transition-colors
+                      duration-300
+                      group-hover:text-white
+                    "
+                    style={{ color: "white" }}
+                  >
+                    {title}
+                  </h4>
+
+                  <p
+                    className="
+                      text-sm
+                      leading-relaxed
+                      transition-colors
+                      duration-300
+                      group-hover:text-white/90
+                    "
+                    style={{ color: "rgba(255,255,255,.65)" }}
+                  >
+                    {description}
+                  </p>
+                </div>
+
+                {/* Arrow */}
+                <div
+                  className="
+                    text-xl
+                    text-white/40
+                    transition-all
+                    duration-300
+                    group-hover:translate-x-2
+                    group-hover:text-white
+                  "
+                >
+                  →
+                </div>
               </div>
+
+              {/* Bottom Border Animation */}
+              <div
+                className="
+                  absolute
+                  left-0
+                  bottom-0
+                  h-[3px]
+                  w-0
+                  transition-all
+                  duration-500
+                  group-hover:w-full
+                "
+                style={{
+                  background: "linear-gradient(90deg,#ffffff,#d8b4fe,#ffffff)",
+                }}
+              />
             </div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -58,8 +58,8 @@ export default function Contribute() {
               e.currentTarget.style.color = 'white'
             }}
             onMouseLeave={e => {
-              e.currentTarget.style.background = 'white'
-              e.currentTarget.style.color = 'var(--ink)'
+              e.currentTarget.style.background = 'var(--cream-dark)'
+              e.currentTarget.style.color = '#0D0D0D'
             }}
           >
             <GitHubIcon /> View on GitHub

@@ -19,6 +19,7 @@ import Contact from './pages/Contact'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import MentorList from './components/MentorList'
+import ProjectPath from './components/ProjectPath'
 import './styles/globals.css'
 
 function ScrollToTop() {
@@ -47,6 +48,7 @@ function App() {
                                 <Pillars />
                                 <LearningPath />
                                 <Storyboards />
+                                <ProjectPath />
                                 <Mentors />
                                 <SummerOfAI />
                                 <Contribute />

@@ -6,6 +6,7 @@ import { useTheme } from '../hooks/useTheme'
 const NAV_LINKS = [
   { label: 'Learn', href: '/#learn' },
   { label: 'AI Concepts', href: '/#concepts' },
+  { label: 'Projects', href: '/#projects' },
   { label: 'Mentors', href: '/#mentors' },
   { label: 'Summer of AI', href: '/#summer' },
   { label: 'Contribute', href: '/#contribute' },

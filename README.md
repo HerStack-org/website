@@ -120,14 +120,15 @@ herstack/
 │   │   ├── Pillars.jsx
 │   │   ├── LearningPath.jsx
 │   │   ├── Storyboards.jsx
-│   │   ├── Mentors.jsx
+│   │   ├── Mentors.jsx 
 │   │   ├── SummerOfAI.jsx
 │   │   ├── Contribute.jsx
 │   │   └── Footer.jsx
 │   ├── data/                # Content as JS objects — easy to edit without touching UI code
 │   │   ├── mentors.js       ← add mentors here
 │   │   ├── resources.js     ← add resources here
-│   │   └── storyboards.js   ← add storyboard concepts here
+│   │   │── storyboards.js   ← add storyboard concepts here 
+│       └── projects.js      ← add hands-on project ideas here
 │   ├── styles/
 │   │   └── globals.css      # CSS variables, base styles, Tailwind imports
 │   ├── App.jsx              # Root component
@@ -150,6 +151,7 @@ See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full guide. Quick summary:
 |---|---|
 | Add a mentor | Edit `src/data/mentors.js` and open a PR |
 | Add a resource | Edit `src/data/resources.js` and open a PR |
+| Add a project idea | Edit `src/data/projects.js` and open a PR |
 | Propose a storyboard concept | Open a GitHub issue with the label `storyboard` |
 | Fix a bug / build a feature | Check [open issues](../../issues) for `good first issue` labels |
 | Improve copy or fix typos | Edit the relevant component and open a PR |

@@ -90,7 +90,7 @@ export default function Footer() {
 
         <div className="flex justify-between items-center">
           <p className="text-xs font-light" style={{ color: 'rgba(255,255,255,0.25)' }}>
-            © 2025 HerStack · Made with <span style={{ color: 'var(--purple-mid)' }}>♥</span> for India's next generation of AI builders · Open Source
+            © 2026 HerStack · Made with <span style={{ color: 'var(--purple-mid)' }}>♥</span> for India's next generation of AI builders · Open Source
           </p>
           <div
               className="font-display font-bold text-base"

@@ -45,7 +45,7 @@ export default function Pillars() {
           >
             <div
               className="absolute top-6 right-6 font-display font-bold leading-none select-none"
-              style={{ fontSize: '3rem', color: 'rgba(13,13,13,0.04)' }}
+              style={{ fontSize: '3rem', color: 'rgba(174, 172, 167)' }}
             >
               {num}
             </div>
